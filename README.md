@@ -24,6 +24,8 @@ We have code that prints out the shapes of every trainable parameter in the mode
 Total: 1,463,821 total learnable parameters
 
 ### Simple RNN model parameters:
+We also created a simple caption generator to compare the results of the above model to it. 
+
 - Feature Map MLP + batch norm: 6,214,268
 - Caption Embedding + batch norm: 878,300
 - GRU: 274,944
@@ -75,7 +77,7 @@ Real captions
 
 ## Data 
 
-The dataset we are using is FLickr8k. Source: https://www.kaggle.com/datasets/adityajn105/flickr8k
+The dataset we are using is Flickr8k. Source: https://www.kaggle.com/datasets/adityajn105/flickr8k
 
 
 There are 8091 images in the dataset, each with 5 captions.
@@ -99,6 +101,8 @@ Vocabulary size: 8781
 10 least common words: ['swatting', 'containig', 'rainstorm', 'breezeway', 'cocker', 'spaniels', 'weight', 'majestically', 'scrolled', 'patterns']
 ```
 
+Note that the shortest caption is just 'a' and some of the least common words are misspelled. We made sure that is what the dataset actually has, not a mistake on our end.
+
 Note that vocabulary size includes 3 special tokens that we added: \<bos\>, \<eos\>, \<pad\>. They each have an index in the vocab dictionary.
 ```
 Index of <bos>: 0
@@ -116,8 +120,9 @@ For the captions, we find all distinct words and create a vocabulary dictionary 
 
 The training, validation and test splits are 6000 training images, 1000 validation images, and 1091 testing images with all 5 of their respective captions.
 
-### Training Curve
+## Training Curve
 
+### Transformer
 <img src="./assets/loss_curve.PNG" width="600"/>
 
 <img src="./assets/accuracy_curve.PNG" width="600"/>
@@ -181,6 +186,10 @@ But in general, our model was able to understand very general things about the p
 To better understand how well this model does and to compare it to other models that have been used for this task, we created a very simple model caption generator. The architecture for this model uses a CNN to extract the feature maps of the image as well, but then it passes this to a large MLP which is used to learn a latent vector that encodes as much info about the image that it can. This vector is then passed into a GRU as the initial hidden state in order to translate the image into a caption. All of the code for this can be found in the notebook, this model is called SimpleCaptionGenerator. 
 
 We trained this model as well for 30 epochs. The training accuracy was able to reach over 90%, which means it can memorize the training set very well, but the validation accuracy is still flat-lined at around 5% (See the training curves in the notebook and attached below). This means adding significantly more neurons to understand the image still resulted in a model with the same performance.
+
+<img src="./assets/loss_curve1.PNG" width="600"/>
+
+<img src="./assets/accuracy_curve1.PNG" width="600"/>
 
 
 ## Ethical Consideration
