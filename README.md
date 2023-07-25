@@ -195,18 +195,4 @@ We trained this model as well for 30 epochs. The training accuracy was able to r
 ## Ethical Consideration
 This model can be used to serve those who are visually impaired, as it gives them a way to “see” images with text that summarizes the image, which can then be recited to them by software. It also may be used in album management softwares to conveniently group photos by content. It also may raise concerns if this model is applied in a surveillance tool to understand images captured with security cameras, which can then be used to track people’s activities without their knowledge. Such examples, like Amazon which implements machine learning cameras to monitor their workers. This creates a hostile working environment that inflates the company’s power on eliminating union formation and other threats that the company considered. 
 
-## Authors
-
-- Alhumam: 
-Dataset loading. Pre-processing images so that they are equally sized, then apply padding to turn them into tensors that can be inputted to the model. Caption pre-processing to turn captions into sequences of indices in a vocab dictionary. Also wrote the code for the SimpleCaptionGenerator model and trained it.
-
-- Baichen: 
-Write the code for the transformer model and the training function. The code should be working properly so that training on the training set can see the training accuracy increase and finally print the training curve. Also wrote the inference and compute accuracy functions. 
-
-- Jingyuan: 
-Hyperparameter tuning and performance testing. To test the model's performance, experiment with different hyperparameters, embedding sizes, batch norm / drop out layers to optimize the model.
-
-- All together: 
-Generate the final report. Setup github repository and other miscellaneous tasks. Research the necessary implementation details when problems arise. 
-
 
